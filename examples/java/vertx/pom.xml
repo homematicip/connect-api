@@ -1,0 +1,219 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.example.plugin</groupId>
+	<artifactId>java-example</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+
+	<name>ConnectAPI Java Example</name>
+	<url>https://homematic-ip.com</url>
+
+
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
+
+		<maven-assembly-plugin.version>3.5.0</maven-assembly-plugin.version>
+		<vertx.version>4.4.4</vertx.version>
+		<jackson.version>2.15.2</jackson.version>
+		<log4j.version>2.20.0</log4j.version>
+		<inceptionYear>2014</inceptionYear>
+		<copyrightOwner>eQ-3 AG</copyrightOwner>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
+				<configuration>
+					<source>${maven.compiler.source}</source>
+					<target>${maven.compiler.target}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>${maven-assembly-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>install</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<finalName>${project.artifactId}-${project.version}</finalName>
+							<appendAssemblyId>false</appendAssemblyId>
+							<descriptorRefs>
+								<descriptorRef>jar-with-dependencies</descriptorRef>
+							</descriptorRefs>
+							<archive>
+								<manifest>
+									<mainClass>org.example.plugin.PluginStarter</mainClass>
+								</manifest>
+								<manifestEntries>
+									<Build-Timestamp>${maven.build.timestamp}</Build-Timestamp>
+									<Build-Version>${project.version}</Build-Version>
+									<Build-By>${user.name}</Build-By>
+									<Build-OS-Name>${os.name}</Build-OS-Name>
+									<Build-OS-Version>${os.version}</Build-OS-Version>
+									<Build-OS-Arch>${os.arch}</Build-OS-Arch>
+									<Build-JDK-Version>${java.version}</Build-JDK-Version>
+									<Build-JDK-Vendor>${java.vendor}</Build-JDK-Vendor>
+								</manifestEntries>
+							</archive>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>io.fabric8</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>0.42.1</version>
+				<configuration>
+					<images>
+						<image>
+							<alias>${project.artifactId}</alias>
+							<name>org/example/plugin/java</name>
+							<build>
+								<createImageOptions>
+									<platform>linux/arm64</platform>
+								</createImageOptions>
+								<contextDir>${project.basedir}/src/main/docker</contextDir>
+								<assembly>
+									<targetDir>/app</targetDir>
+									<descriptorRef>artifact</descriptorRef>
+								</assembly>
+							</build>
+						</image>
+					</images>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.groovy.maven</groupId>
+				<artifactId>gmaven-plugin</artifactId>
+				<version>1.0</version>
+				<executions>
+					<execution>
+						<phase>validate</phase>
+						<goals>
+							<goal>execute</goal>
+						</goals>
+						<configuration>
+							<source>
+								import java.util.Date
+								import java.text.MessageFormat
+								def
+								vartimestamp =
+								MessageFormat.format("{0,date,yyyy}", new
+								Date())
+								project.properties['currentYear'] = vartimestamp
+							</source>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>com.mycila.maven-license-plugin</groupId>
+				<artifactId>maven-license-plugin</artifactId>
+				<version>1.8.0</version>
+				<configuration>
+					<!-- Template location -->
+					<header>license-header.txt</header>
+					<properties>
+						<!-- Values to be substituted in template -->
+						<h_inceptionYear>${inceptionYear}</h_inceptionYear>
+						<h_currentYear>${currentYear}</h_currentYear>
+						<h_copyrightOwner>${copyrightOwner}</h_copyrightOwner>
+					</properties>
+					<strictCheck>true</strictCheck>
+					<includes>
+						<include>**/*.java</include>
+					</includes>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>validate</phase>
+						<goals>
+							<goal>format</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>io.vertx</groupId>
+			<artifactId>vertx-core</artifactId>
+			<version>${vertx.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.vertx</groupId>
+			<artifactId>vertx-web-client</artifactId>
+			<version>${vertx.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.vertx</groupId>
+			<artifactId>vertx-web</artifactId>
+			<version>${vertx.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.28</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.13.2</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>de.eq-3.plugin</groupId>
+			<artifactId>connect-api</artifactId>
+			<version>1.4.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+	</dependencies>
+
+</project>
