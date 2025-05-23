@@ -1,5 +1,5 @@
 # Use an ARM64-compatible base image
-FROM --platform=linux/arm64 node:18-alpine
+FROM --platform=linux/arm64 ghcr.io/homematicip/alpine-node-simple:0.0.1
 
 # Set the working directory inside the container
 WORKDIR /app
@@ -22,7 +22,7 @@ LABEL de.eq3.hmip.plugin.metadata=\
 	"pluginId": "de.doe.jane.plugin.example.node",\
 	"issuer": "Jane Doe",\
 	"version": "1.0.0",\
-	"hcuMinVersion": "1.3.7",\
+	"hcuMinVersion": "1.4.7",\
 	"scope": "LOCAL",\
 	"friendlyName": {\
 		"en": "Node.js Example",\

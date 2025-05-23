@@ -52,11 +52,11 @@ This directory contains a Java-based example implementation for the Homematic IP
    ```dockerfile
    LABEL de.eq3.hmip.plugin.metadata="{\"pluginId\":\"org.example.plugin.java\", \
      \"version\":\"1.0.0\", \
-     \"hcuMinVersion\":\"1.4.0\", \
-     \"friendlyName\":{\"de\":\"SDK Plugin\",\"en\":\"SDK Plugin\"}, \
+     \"hcuMinVersion\":\"1.4.7\", \
+     \"friendlyName\":{\"de\":\"Java-Beispiel\",\"en\":\"Java Example\"}, \
      \"changelog\": \"New Features\",\
      \"issuer\":\"Developer\", \
-     \"description\":{\"de\":\"SDK Plugin Beispiel\",\"en\":\"SDK Plugin Example\"}, \
+     \"description\":{\"de\":\"Meine Beschreibung\",\"en\":\"My description\"}, \
      \"scope\":\"LOCAL\", \
      \"logsEnabled\": true, \
      \"image\":null \
@@ -64,7 +64,7 @@ This directory contains a Java-based example implementation for the Homematic IP
    ```
 
 2. **Build and save the Docker Image**:
-   Use the Maven Docker plugin to build and sava the image:
+   Use the Maven Docker plugin to build and save the image:
    ```bash
    mvn docker:build docker:save
    ```
