@@ -1,0 +1,18 @@
+{
+    "changelog": "Version 1.3.2\n  - Support onTime\n  - Improve bridge connection\n  \nVersion 1.2.3\n  - Improve bridge connection\n  \nVersion 1.2.1\n  - Fix handling of LivingWhites(LWL001) plugs",
+    "description": {
+        "de": "Mithilfe dieses Plugins kann eine Verbindung zu einer Philips Hue Bridge hergestellt werden. Die an die Hue Bridge angelernten Geräte erscheinen nach der Konfiguration auf dem Homescreen oder in der Geräteliste der Homematic IP App.",
+        "en": "This plugin can be used to establish a connection to a Philips Hue Bridge. After configuration, the devices connected to the Hue Bridge appear on the homescreen or in the device list of your Homematic IP app."
+    },
+    "friendlyName": {
+        "de": "Philips Hue Beispiel",
+        "en": "Philips Hue Beispiel"
+    },
+    "hcuMinVersion": "1.4.0",
+    "image": "iVBORw0KGgoAAAANSUhEUgAAAHUAAAB0CAMAAAH7gb29AAAACXBIWXMAAC4jAAAuIwF4pT92AAAAWlBMVEX///8QVIgQVIgQVIgQVIgQVIgQVIgQVIgQVIgQVIgQVIgQVIgQVIgQVIgQVIgQVIgQVIgQVIgQVIgQVIgQVIgQVIgQVIgQVIgQVIgQVIgQVIgQVIgQVIgQVIgFlOPRAAAAHXRSTlMAEBEgIjAzQERQVWBmcHeAiJCZoLC7wMzQ3eDu8IVLS9EAAARdSURBVGje7VoNe6MgDMZxjvacxzrUOUf+/988xS8IIODqbreZ59laGl5fPpIQ0hIyCyW6ZISA3gatDYMsL0bHiHYGa3t+uzyKkJwgAQD01vN80Nugt9F4lXDEQqTR5uYIgI8vFA2OhdvGdJk+QudkzP657/kTmqHxMjRe5lhNAOITEGhISM2danf/hfsodT/JXlSXWq1HPWgECMZ6LV+tRlevn7bO58Keid30RbXUXau3LLW5qPaOkYITvwzMwqvMN3fTwxevRQMrYZbF0jRz4+B/0n+orZyOdJtDzWiZU9969uzeMilZnXp8Qq3+S7BtDsiFPBlRwjOeYt6ArclM+4O19O57NDwv92mV34FXa9iVU9s0aVrdChtkk37pxm6MJIucUNKO3iER+lGXiIXVG5OHbWD5dl+GxMAKpDQXYN0LexsKW8cQNmU+J/YTsXLZss6MeSrNqY2cQ7MBqpDUEU10bL1kpGAc2aVjoF4sckW+gX3qR/am50m4L7gzB6c0GNwOj22UZCHwde07uxirhlYXtUfZTUEPto1MBcpmB3bw+Ov4kiVii+WDzAKHsFq8avC474v1xskGWqxjdpLujpN0Q+cVynlB9ggz3DpFioThIYsCkDN3+tG7rFLyEUiXk79LhWoeuxfK/gk02w8NZih2oqD7CpKA+UOUzqmu4qFJfnFCT+hPh5ZdfIzPW83pSuyCKlUD7dWs+q2dxZBtcCXUAzWigSznAJPZiZsfKo28wpFwzePRBlzjk8RzF/Oy8uCOzJCX/u+PDkXpyAaUvPdDfRwncCFjIcOEipRD/gO5ZYHWkyZk1aWZMOA8ebte1o2dqXl3ieJFJa0pw45aK9W3/YZRovRUSsLQeTVlMnSseg6Xjy4RKmbPLiyLC0HXFF5iXRiqJfB7oeT7QeNzxDKU6EXniI2lbfS4jyQ+Gvocfzn42oJ8jljFNH4853VaymvvXVkxrXF5MKlQ0UOr7WStpxxx79W9OT4TR7IOK2oVnm6Qcm7uEKfxsJ2V8ZM1lpUc7bRHsGYdRAj3ZgGb4vUtHgUvXLWiCGFbrGxbnH5JA6AyyHqEObCT9WQ9WU/Wk/XHsObuM4eKYJ18KnTV8+98al3hrafkjfd8FeEzO8j6elHiuB+4c4nxviJ5tp0mBVhrXzlEFt4tbEPf/C6Ted2a66N1EfA8OI+7m+D9du9rja319jFrxSv8Bq+q+QDw4l5hsfXgnayPAO/Pl98vAG8P+gY8GNcv77WyjLskYFZCfj33W1z/eTA34GJOx2su3UG3P7p5h87kQXdddYeW3mWsJufN70ybjzeBrnCvZFa5QsgdKgxX5w1kLWdmvNvxVX/MIVMl3nPO8/VrsOYlr5qKF/TTWK+mCYZ/s3QH1tvyrUAze4jMD2YdY1qXo6qCOJR1JM3tyYsjWSvXoaFg1wNZ3ZmCNH6fcQwrd1ZSm5P1a7PuqCM2H6rosZ1oEYWjEdcwn7iDXxA21B//AncfGLK/3nzPAAAAAElFTkSuQmCC",
+    "issuer": "eQ-3 AG",
+    "pluginId": "de.homematicip.example.plugin.hue",
+    "scope": "LOCAL",
+    "settings": [],
+    "version": "1.4.0"
+}
