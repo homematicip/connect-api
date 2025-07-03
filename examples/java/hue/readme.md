@@ -69,7 +69,7 @@ This directory contains a Java-based example plugin for the Homematic IP Connect
 
 ## Documentation
 
-For detailed information about the Homematic IP Connect API, see the [full documentation](https://github.com/homematicip/connect-api) or the `connect-api-documentation-1.0.0.html` file in the repository.
+For detailed information about the Homematic IP Connect API, see the [full documentation](https://github.com/homematicip/connect-api).
 
 ## License
 

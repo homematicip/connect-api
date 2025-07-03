@@ -4,9 +4,9 @@ This repository provides the Homematic IP Connect API, enabling developers to cr
 
 ## Documentation
 
-For detailed information about the API, including usage, examples, and schema definitions, refer to the full documentation available in the `connect-api-documentation-1.0.0.html` file.
+For detailed information about the API, including usage, examples, and schema definitions, refer to the full documentation available in the `connect-api-documentation-1.0.1.html` file.
 
-[Download Documentation](https://github.com/homematicip/connect-api/releases/download/1.0.0/connect-api-documentation-1.0.0.html)
+[Download Documentation](https://github.com/homematicip/connect-api/releases/download/1.0.1/connect-api-documentation-1.0.1.html)
 
 
 

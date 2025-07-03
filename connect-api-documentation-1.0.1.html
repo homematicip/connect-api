@@ -659,8 +659,8 @@ pre.rouge {
 <h1>Homematic IP Connect API Documentation</h1>
 <div class="details">
 <span id="author" class="author">Copyright eQ-3 AG</span><br>
-<span id="revnumber">version 1.0.0,</span>
-<span id="revdate">2025-05-23</span>
+<span id="revnumber">version 1.0.1,</span>
+<span id="revdate">2025-07-03</span>
 <br><span id="revremark">Home Control Unit 1.4.7 or later</span>
 </div>
 <div id="toc" class="toc2">
@@ -1141,7 +1141,8 @@ You can access the "HCUweb" web service in your local network at <a href="https:
 This identifier is required to obtain an authorization token and must be included in the WebSocket connection request as well as in all subsequent messages.</p>
 </div>
 <div class="paragraph">
-<p>It is recommended to use <strong>reverse domain name notation</strong> as a convention for plugin identifiers.</p>
+<p>While you are free to choose any identifier for your plugin, it is recommended to follow the <strong>reverse domain name notation</strong> convention (e.g., <code>de.homematicip.example.plugin</code> or <code>org.example.plugin</code>).
+Including your organization&#8217;s domain and name - or your own last and first name - into the identifier helps ensure uniqueness and minimizes the risk of conflicts with other plugins.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -1150,7 +1151,8 @@ This identifier is required to obtain an authorization token and must be include
 <div class="title">Tip</div>
 </td>
 <td class="content">
-This guide uses the plugin identifier <code>de.doe.jane.plugin.example</code>. You can customize it by replacing <code>doe</code> and <code>jane</code> with your last and first name, respectively.
+This guide uses the plugin identifier <code>de.doe.jane.plugin.example</code>.
+You can customize it by replacing <code>doe</code> and <code>jane</code> with your last and first name, respectively.
 </td>
 </tr>
 </table>
@@ -1220,6 +1222,18 @@ The activation key can be used only once and expires after a certain period.
 <p>In the URL template, replace <code>XXXX</code> with the last four digits of the SGTIN found on the underside of your Home Control Unit to get your specific URL.
 Then, send a <strong>POST request</strong> to that URL including the required headers and JSON body.
 The authorization token will be included in the response body.</p>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+API development and testing tools like Postman offer a simple way to send POST requests.
+</td>
+</tr>
+</table>
+</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -1655,7 +1669,9 @@ Refer to the <a href="#example_implementation">Example</a> chapter for an exampl
 <div class="title">Note</div>
 </td>
 <td class="content">
-When sending a message in response to a request sent by the Home Control Unit, your plugin should use that request&#8217;s message identifier in the response. Likewise will the Home Control Unit typically use the request&#8217;s message identifier in direct responses.
+When sending a message in response to a request sent by the Home Control Unit, your plugin should use that request&#8217;s <strong>message identifier</strong> in the response. Likewise will the Home Control Unit typically use the request&#8217;s message identifier in direct responses.<br>
+<br>
+When sending unsolicited messages, e.g., the <a href="#_pluginstateresponse">PluginStateResponse</a> right after startup, your plugin should generate a unique message identifier, like a random UUID.
 </td>
 </tr>
 </table>
@@ -2366,6 +2382,18 @@ The Home Control Unit maps the exposed ports directly, meaning that if your plug
 For simplicity, it does not include proper error handling or other safeguards.
 Refer to at it as a starting point for developing your own Node.js plugin or as a reference to understand the Homematic IP Connect API better.</p>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+Visit the <a href="https://github.com/homematicip/connect-api/tree/main/examples">Connect API repository on GitHub</a> for more complex examples.
+</td>
+</tr>
+</table>
+</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -2780,6 +2808,7 @@ wss://hcu1-1234.local:9001</code></p></td>
 </td>
 <td class="content">
 If the message is the response to a request from the Home Control Unit, use the request&#8217;s message identifier in the response.
+For every unsolicited message, your plugin should generate a unique identifier, like a random UUID.
 </td>
 </tr>
 </table>
@@ -20315,8 +20344,8 @@ used if one or more triggers actions of the rule is not valid</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.0<br>
-Last updated 2025-05-23 13:18:25 +0200
+Version 1.0.1<br>
+Last updated 2025-07-03 09:10:19 +0200
 </div>
 </div>
 </body>
